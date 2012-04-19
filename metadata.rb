@@ -18,4 +18,6 @@ end
   supports el, ">= 6.0"
 end
 
-depends "openssl"
+%w{apt openssl sysctl}.each do |cb|
+  depends cb
+end
