@@ -103,7 +103,7 @@ end
 default[:postgresql][:data_path]="/var/lib/postgresql"
 default[:postgresql][:data_directory]="#{node[:postgresql][:data_path]}/#{node[:postgresql][:version]}/data"
 default[:postgresql][:wal_directory]="#{node[:postgresql][:data_path]}/#{node[:postgresql][:version]}/pg_xlog"
-default[:postgresql][:hba_file]="#{node[:postgresql][:data_path]}/#{node[:postgresql][:version]}/pg_hba.conf"
+default[:postgresql][:hba_file]="#{node[:postgresql][:data_path]}/#{node[:postgresql][:version]}/data/pg_hba.conf"
 default[:postgresql][:ident_file]="#{node[:postgresql][:data_path]}/pg_ident.conf"
 default[:postgresql][:external_pid_file]="#{node[:postgresql][:data_path]}/#{node[:postgresql][:version]}/postgresql.pid"
 default[:postgresql][:temp_tablespaces]="/var/tmp/postgresql"

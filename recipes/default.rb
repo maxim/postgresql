@@ -16,13 +16,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-log "x: #{node[:postgresql][:version]}"
-apt_repository "postgresql-#{node[:postgresql][:version]}" do
-  uri "http://ppa.launchpad.net/pitti/postgresql/ubuntu"
-  distribution node['lsb']['codename']
-  components ["main"]
-  key "8683D8A2"
-  keyserver "keyserver.ubuntu.com"
-end
+#apt_repository "postgresql-#{node[:postgresql][:version]}" do
+#  uri "http://ppa.launchpad.net/pitti/postgresql/ubuntu"
+#  distribution node['lsb']['codename']
+#  components ["main"]
+#  key "8683D8A2"
+#  keyserver "keyserver.ubuntu.com"
+#end
 require_recipe "postgresql::client"
-require_recipe "postgresql::server"
+# require_recipe "postgresql::server"

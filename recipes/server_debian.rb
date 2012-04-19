@@ -48,11 +48,13 @@ end
 
 package "postgresql-9.1"
 package "postgresql-contrib-9.1"
+
 directory "#{node[:postgresql][:temp_tablespaces]}" do
   owner "postgres"
   group "postgres"
   mode 0755
   action :create
+  recursive true
 end
 
 service "postgresql" do
@@ -77,6 +79,13 @@ service "postgresql" do
   supports :restart => true, :status => true, :reload => true
   action :stop
   not_if { File.exists?("/var/run/postgres.initdb.done") }
+end
+
+directory "#{node[:postgresql][:temp_tablespaces]}" do
+  owner "postgres"
+  group "postgres"
+  mode 0600
+  recursive true
 end
 
 template "#{node[:postgresql][:dir]}/postgresql.conf" do
@@ -130,7 +139,7 @@ end
 file "#{node[:postgresql][:dir]}/.org_grok" do
   owner "postgres"
   mode 0600
-  content node[:postgresql][:password][:postgres]
+  content node[:postgresql][:password].to_s
 end
 
 # TODO: Mount volumes
@@ -160,7 +169,7 @@ sysctl "Swappiness of 15" do
   variables 'vm.swappiness' => node[:postgresql][:swappiness]
 end
 
-template "/var/lib/postgresql/pg_hba.conf" do
+template "#{node[:postgresql][:hba_file]}" do
   source "pg_hba.conf.erb"
   owner "postgres"
   group "postgres"
