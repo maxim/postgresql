@@ -192,7 +192,9 @@ License and Author
 ==================
 
 Author:: Scott M. Likens (<scott@likens.us>)
+
 Author:: Joshua Timberman (<joshua@opscode.com>)
+
 Author:: Lamont Granquist (<lamont@opscode.com>)
 
 Licensed under the Apache License, Version 2.0 (the "License");
