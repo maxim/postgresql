@@ -144,6 +144,13 @@ end
 
 # TODO: Mount volumes
 
+directory "#{node[:postgresql][:wal_directory]}" do
+  owner "postgres"
+  group "postgres"
+  action :create
+  recursive true
+end
+
 execute "init-postgres" do
   command "/usr/lib/postgresql/9.1/bin/initdb -D #{node[:postgresql][:data_directory]} -X #{node[:postgresql][:wal_directory]} --pwfile=#{node[:postgresql][:dir]}/.org_grok --encoding=#{node[:postgresql][:encoding]} --locale=#{node[:postgresql][:locale]} -A #{node[:postgresql][:local_authentication]}"
   action :run
