@@ -144,7 +144,7 @@ Due to trying to keep this cookbook as generic as possible the Hot Streaming is 
 
     standby_mode          = 'on'
 
-    primary_conninfo      = 'host=192.168.0.10 port=5432 user=postgres'
+    primary_conninfo      = 'host=192.168.0.10 port=5432 user=postgres password=whatever'
 
     trigger_file = '/path_to/trigger'
 
