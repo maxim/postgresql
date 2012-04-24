@@ -115,6 +115,7 @@ default[:postgresql][:max_connections]="65535"
 default[:postgresql][:wal_level]="hot_standby"
 default[:postgresql][:hot_standby]="on"
 default[:postgresql][:hot_standby_feedback]="on"
+default[:postgresql][:replicas]=["10.0.0.0/8"]
 
 # Misc Settings
 default[:postgresql][:swappiness]="15"
