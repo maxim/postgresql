@@ -111,7 +111,7 @@ template "#{node[:postgresql][:dir]}/postgresql.conf" do
             :wal_writer_delay => node[:postgresql][:wal_writer_delay],
             :checkpoint_segments => node[:postgresql][:checkpoint_segments],
             :checkpoint_timeout => node[:postgresql][:checkpoint_timeout],
-            :hot_standby => "on",
+            :hot_standby => node[:postgresql][:hot_standby],
             :hot_standby_feedback => node[:postgresql][:hot_standby_feedback],
             :effective_cache_size => node[:postgresql][:effective_cache_size],
             :default_statistics_target => node[:postgresql][:default_statistics_target],
