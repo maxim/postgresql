@@ -35,15 +35,19 @@ when "8.3"
 else 
   node.default[:postgresql][:ssl] = "true"
 end
-
-apt_repository "postgresql-#{node[:postgresql][:version]}" do
-  uri "http://ppa.launchpad.net/pitti/postgresql/ubuntu"
-  distribution node['lsb']['codename']
-  components ["main"]
-  key "8683D8A2"
-  keyserver "keyserver.ubuntu.com"
-  deb_src true
-  action :add
+case node[:platform_version]
+when "12.04"
+  log "No package needed"
+else
+  apt_repository "postgresql-#{node[:postgresql][:version]}" do
+    uri "http://ppa.launchpad.net/pitti/postgresql/ubuntu"
+    distribution node['lsb']['codename']
+    components ["main"]
+    key "8683D8A2"
+    keyserver "keyserver.ubuntu.com"
+    deb_src true
+    action :add
+  end
 end
 
 package "postgresql-9.1"
