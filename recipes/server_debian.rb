@@ -61,6 +61,22 @@ directory "#{node[:postgresql][:temp_tablespaces]}" do
   recursive true
 end
 
+# Temporary workaround for recursive directory
+# creation issue in chef 10.12.0 which creates
+# parent directories as a default user, instead
+# of the owner/group specified in the resource.
+directory node[:postgresql][:data_path] do
+  owner "postgres"
+  group "postgres"
+  action :create
+end
+
+directory "#{node[:postgresql][:data_path]}/#{node[:postgresql][:version]}" do
+  owner "postgres"
+  group "postgres"
+  action :create
+end
+
 service "postgresql" do
   case node['platform']
   when "ubuntu"
