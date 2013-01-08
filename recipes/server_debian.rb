@@ -205,9 +205,10 @@ template "#{node[:postgresql][:hba_file]}" do
   group "postgres"
   mode 0600
   variables(
-            :method => node[:postgresql][:local_authentication],
-            :replica => node[:postgresql][:replicas]
-            )
+    method:        node[:postgresql][:local_authentication],
+    replica:       node[:postgresql][:replicas],
+    trusted_hosts: node[:postgresql][:trusted_hosts]
+  )
 #  notifies :reload, resources(:service => "postgresql"), :immediately
 end
 
