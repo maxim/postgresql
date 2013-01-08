@@ -112,6 +112,7 @@ default[:postgresql][:encoding]="UTF8"
 default[:postgresql][:locale]="en_US.UTF-8"
 default[:postgresql][:text_search_config]="pg_catalog.english"
 default[:postgresql][:max_connections]="65535"
+default[:postgresql][:trusted_hosts]=[]
 # Hot standby Settings
 default[:postgresql][:wal_level]="hot_standby"
 default[:postgresql][:hot_standby]="on"

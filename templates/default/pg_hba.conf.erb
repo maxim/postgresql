@@ -87,6 +87,9 @@ local   all             postgres                                ident
 local   all             all                                     <%= @method %>
 # IPv4 local connections:
 host    all             all             127.0.0.1/32            <%= @method %>
+<% @trusted_hosts.each do |host| %>
+host    all             all             <%= host %>             <%= @method %>
+<% end %>
 # IPv6 local connections:
 host    all             all             ::1/128                 <%= @method %>
 <% @replica.each do |p| %>

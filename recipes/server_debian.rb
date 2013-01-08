@@ -147,9 +147,10 @@ template "#{node[:postgresql][:dir]}/pg_hba.conf" do
   group "postgres"
   mode 0600
   variables(
-            :method => node[:postgresql][:local_authentication],
-            :replica => node[:postgresql][:replicas]
-            )
+    method:        node[:postgresql][:local_authentication],
+    replica:       node[:postgresql][:replicas],
+    trusted_hosts: node[:postgresql][:trusted_hosts]
+  )
 end
 
 file "/var/run/postgres.initdb.done" do
